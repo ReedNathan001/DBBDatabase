@@ -1,7 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const os = require('os');
-const path = require('path');
 const mysql = require('mysql');
 const https = require('https');
 const fs = require('fs');
@@ -38,18 +36,8 @@ app.get('/api/legos', (req, res) => {
 app.get('/', (req, res) => {
     res.send('Hello, world!');
 });
-// SSL options
-const options = {
-  key: fs.readFileSync(path.join(os.homedir(), 'key.pem')),
-  cert: fs.readFileSync(path.join(os.homedir(), 'cert.pem')),
-  passphrase: 'G0dS3|\\ID_belady'
-};
 
-// Create HTTPS server
-https.createServer(options, app).listen(5000, () => {
-  console.log('HTTPS server is running on port 5000');
-});
-/*
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
-});*/
+});
